@@ -1,17 +1,47 @@
 const convertBtn = document.getElementById("convert-btn")
-const lengthConversion = document.getElementById("length-conversion")
-const volumeConversion = document.getElementById("volume-conversion")
-const massConversion = document.getElementById("mass-conversion")
+const btmEl = document.getElementById("btm-el")
+
+const conversionInfo = [
+    {
+        title: "Length (Meter/Feet)",
+        measurement1: "meters",
+        measurement2: "feet",
+        conversionValue: 3.281
+    },
+    {
+        title: "Volume (Liters/Gallons)",
+        measurement1: "liters",
+        measurement2: "gallons",
+        conversionValue: 0.264
+    },
+    {
+        title: "Mass (Kilograms/Pounds)",
+        measurement1: "kilograms",
+        measurement2: "pounds",
+        conversionValue: 2.204
+    }
+]
+
+for (let i = 0; i < conversionInfo.length; i++) {
+    btmEl.innerHTML += `
+    <div class="conversion-container">
+        <h3>${conversionInfo[i].title}</h3>
+        <p>${conversionInfo[i].measurement1} to ${conversionInfo[i].measurement2} | ${conversionInfo[i].measurement2} to ${conversionInfo[i].measurement1}</p>
+    </div>
+    `
+}
 
 convertBtn.addEventListener("click", function() {
-    const unitNumber = parseInt(document.getElementById("unit-number").value)
-    const metersToFeet = unitNumber * 3.281
-    const feetToMeters = unitNumber / 3.281
-    const litersToGallons = unitNumber * 0.264
-    const gallonsToLiters = unitNumber / 0.264
-    const kilosToPounds = unitNumber * 2.204
-    const poundsToKilos = unitNumber / 2.204
-    lengthConversion.innerHTML = `${unitNumber} meters = ${metersToFeet.toFixed(3)} feet | ${unitNumber} feet = ${feetToMeters.toFixed(3)} meters`
-    volumeConversion.innerHTML = `${unitNumber} liters = ${litersToGallons.toFixed(3)} gallons | ${unitNumber} gallons = ${gallonsToLiters.toFixed(3)} liters`
-    massConversion.innerHTML = `${unitNumber} kilograms = ${kilosToPounds.toFixed(3)} pounds | ${unitNumber} pounds = ${poundsToKilos.toFixed(3)} kilograms`    
+    btmEl.innerHTML = " "
+    const inputValue = parseInt(document.getElementById("input-value").value)
+    for (let i = 0; i < conversionInfo.length; i++) {
+        const conv1 = (inputValue * conversionInfo[i].conversionValue).toFixed(3)
+        const conv2 = (inputValue / conversionInfo[i].conversionValue).toFixed(3)
+        btmEl.innerHTML += `
+        <div class="conversion-container">
+            <h3>${conversionInfo[i].title}</h3>
+            <p>${inputValue} ${conversionInfo[i].measurement1} = ${conv1} ${conversionInfo[i].measurement2} | ${inputValue} ${conversionInfo[i].measurement2} = ${conv2} ${conversionInfo[i].measurement1}</p>
+        </div>
+        `
+    }
 })
