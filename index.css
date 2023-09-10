@@ -4,16 +4,20 @@
 }
 
 body {
-    margin: auto;
     background: #1C1C1C;
+    display: flex;
     font-family: 'Inter', sans-serif;
+    justify-content: center;
     padding-top: 126px;
     text-align: center;
-    width: 550px;
+    align-items: center;
+
 }
 
 main {
     background: #6943FF;
+    box-shadow:  0px 0px 16px 0px #6943FF;
+    width: 550px;
 }
 
 h1 {
@@ -31,7 +35,6 @@ h3 {
     font-family: 'Inter', sans-serif;
     font-size: 20px;
     font-weight: 600;
-    margin-bottom: 0px;
 }
 
 p {
@@ -56,7 +59,6 @@ input {
 
 .bottom {
     background: #F4F4F4;
-    margin: 0;
     padding: 10px;
 }
 
@@ -68,13 +70,8 @@ button {
     padding: 9px 27.5px;
 }
 
-.content-border {
-    box-shadow:  0px 0px 16px 0px #6943FF;
-}
-
 .conversion-container {
     background: var(--white, #FFF);
-    border-radius: 4.681px 0px 0px 0px;
     margin: 25px;
     padding: 5px 0 2px
 }
